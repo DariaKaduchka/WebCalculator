@@ -1,0 +1,67 @@
+
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+.calculator {
+  display: grid;
+  /* 4 columns for the calculator buttons */
+  grid-template-columns: repeat(4, 60px);
+  /* 1 row for display + 5 rows for the buttons */
+  grid-template-rows: 80px repeat(5, 60px);
+  gap: 10px;
+  background-color: #000;
+}
+
+/* Display styling */
+.display {
+  grid-column: 1 / -1; /* Span all 4 columns */
+  background-color: #000;
+  color: #fff;
+  font-size: 2.5rem;
+  text-align: right;
+  padding: 20px;
+  border: none;
+  outline: none;
+}
+
+/* Common button styles */
+button {
+  border: none;
+  border-radius: 30px;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+/* Different button types */
+.function {
+  background-color: #A5A5A5;
+  color: #000;
+}
+.operator {
+  background-color: #FF9500;
+  color: #fff;
+}
+.number {
+  background-color: #333;
+  color: #fff;
+}
+
+/* Make "0" span two columns */
+.zero {
+  grid-column: 1 / span 2;
+  text-align: left;
+  padding-left: 25px;
+}
