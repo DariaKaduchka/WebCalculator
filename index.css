@@ -37,6 +37,11 @@ body {
   outline: none;
 }
 
+.display.small {
+  font-size: 1.5rem;
+}
+
+
 /* Common button styles */
 button {
   border: none;
@@ -59,9 +64,10 @@ button {
   color: #fff;
 }
 
-/* Make "0" span two columns */
-.zero {
-  grid-column: 1 / span 2;
-  text-align: left;
-  padding-left: 25px;
+ /* Active state: provide visual feedback when a button is pressed */
+ button:active {
+  transform: scale(0.95);
+  /* Slightly brighten the button */
+  filter: brightness(120%);
 }
+
