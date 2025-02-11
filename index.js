@@ -14,16 +14,34 @@
       // Updates the display with the current operand (or "0" if empty)
       function updateDisplay() {
         display.value = currentOperand || '0';
+        // Count only digit characters (ignoring commas, minus signs, etc.)
+        const digitCount = (currentOperand.match(/\d/g) || []).length;
+        if (digitCount > 7) {
+          display.classList.add('small');
+        } else {
+          display.classList.remove('small');
+        }
       }
 
-      // Append a digit or comma to the current operand
+
       function appendNumber(number) {
+        // Allow only one comma.
+        if (number === ',' && currentOperand.includes(',')) return;
+        
         // Prevent more than one comma (decimal separator)
         if (number === ',' && currentOperand.includes(',')) return;
-        // If currentOperand is "0", replace it; otherwise, append
+
+        // Count only digit characters already in the operand.
+        const digitCount = (currentOperand.match(/\d/g) || []).length;
+        // Only check if the pressed button is a digit (not a comma)
+        if (number !== ',' && digitCount >= 7) {
+          alert("Maximum 7 digits reached");
+          return;
+        }
+        
+        // If currentOperand is "0", replace it; otherwise, append.
         currentOperand = currentOperand === '0' ? number : currentOperand + number;
       }
-
       // Sets the current operator and moves currentOperand to previousOperand
       function chooseOperation(op) {
         if (currentOperand === '') return;
